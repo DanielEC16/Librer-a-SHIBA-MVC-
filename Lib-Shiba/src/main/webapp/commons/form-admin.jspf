@@ -1,4 +1,5 @@
-                    <div class="modal fade text-white" id="exampleModal2" tabindex="-1"
+                    
+<div class="modal fade text-white" id="exampleModal2" tabindex="-1"
                         aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-theme="dark">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -91,3 +92,10 @@
                             </div>
                         </div>
                     </div>
+                    
+                    
+                    
+                    
+                    
+
+                    

@@ -16,6 +16,7 @@ public class RolDAO implements RolCRUD {
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
+	BRol ro = new BRol();
 	
 	@Override
 	public List listar() {
@@ -26,11 +27,11 @@ public class RolDAO implements RolCRUD {
             ps=con.prepareStatement(sql);
             rs=ps.executeQuery();
             while(rs.next()){
-                BRol rol =new BRol();
-                rol.setId(rs.getInt("ID"));
-                rol.setNombre(rs.getString("Nombre"));
-                rol.setDescripcion(rs.getString("Descripcion"));
-                list.add(rol);
+                BRol r =new BRol();
+                r.setId(rs.getInt("ID"));
+                r.setNombre(rs.getString("Nombre"));
+                r.setDescripcion(rs.getString("Descripcion"));
+                list.add(r);
             }
 		}catch (Exception e) {
 		}
@@ -39,13 +40,31 @@ public class RolDAO implements RolCRUD {
 
 	@Override
 	public BRol list(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from roles where id="+id;
+		try {
+			con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+            	ro.setId(rs.getInt("ID"));
+                ro.setNombre(rs.getString("Nombre"));
+                ro.setDescripcion(rs.getString("Descripcion"));
+            }
+		} catch (Exception e) {
+		}
+		return ro;
 	}
 
 	@Override
 	public boolean add(BRol rol) {
-		// TODO Auto-generated method stub
+		String sql = "INSERT INTO ROLES (nombre,descripcion) values (?,?)";
+		try {
+			con = cn.getConnection();
+	        ps = con.prepareStatement(sql);
+	        ps.setString(1, rol.getNombre());
+	        ps.setString(2, rol.getDescripcion());
+		} catch (Exception e) {
+		}
 		return false;
 	}
 
@@ -57,7 +76,13 @@ public class RolDAO implements RolCRUD {
 
 	@Override
 	public boolean eliminar(int id) {
-		// TODO Auto-generated method stub
+		String sql = "delete from roles where Id="+id;
+		try {
+			con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            ps.executeUpdate();
+		} catch (Exception e) {
+		}
 		return false;
 	}
 

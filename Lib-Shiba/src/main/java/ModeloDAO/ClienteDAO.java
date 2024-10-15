@@ -10,6 +10,7 @@ import java.util.List;
 
 import Config.Conexion;
 import Interfaces.ClienteCRUD;
+import Modelo.BAdministradores;
 import Modelo.BCliente;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -51,13 +52,58 @@ public class ClienteDAO implements ClienteCRUD {
 	}
 	@Override
 	public BCliente list(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from clientes where id="+id;
+		try {
+			con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+            	bc.setId(rs.getInt("ID")); // "ID" en mayúsculas
+            	bc.setNom(rs.getString("Nombre"));
+            	bc.setApe(rs.getString("Apellido"));
+            	bc.setTel(rs.getString("Telefono"));
+            	bc.setDni(rs.getString("DNI"));
+            	bc.setDire(rs.getString("Direccion"));
+            	bc.setCorreo(rs.getString("Correo"));
+            	bc.setContra(rs.getString("Contraseña")); 
+            	bc.setFecha_reg(rs.getString("fecha_registro"));
+            	bc.setFoto(rs.getBinaryStream("Foto"));
+
+            }
+		} catch (Exception e) {
+		}
+		return bc;
 	}
 	@Override
 	public boolean add(BCliente cli) {
-		// TODO Auto-generated method stub
-		return false;
+		String sql = "INSERT INTO Clientes (Nombre, Apellido, Telefono, DNI, Direccion, Correo, Contraseña, Foto) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	    try {
+	        con = cn.getConnection();
+	        ps = con.prepareStatement(sql);
+	        
+	        // Establecer los parámetros
+	        ps.setString(1, cli.getNom());
+	        ps.setString(2, cli.getApe());
+	        ps.setString(3, cli.getTel());
+	        ps.setString(4, cli.getDni());
+	        ps.setString(5, cli.getDire());
+	        ps.setString(6, cli.getCorreo());
+	        ps.setString(7, cli.getContra());
+
+	        InputStream inputStream = cli.getFoto(); // Asegúrate de que `getFoto()` devuelva un InputStream
+	        if (inputStream != null) {
+	            ps.setBlob(8, inputStream);
+	        } else {
+	            ps.setNull(8, java.sql.Types.BLOB); // Si no hay archivo, establece el valor como NULL
+	        }
+
+	        // Ejecutar la consulta
+	        int rowsAffected = ps.executeUpdate();
+	        return rowsAffected > 0; // Retornar true si se insertaron filas
+	    } catch (Exception e) {
+	        e.printStackTrace(); // Registra el error para el diagnóstico
+	    }
+	    return false;
 	}
 	@Override
 	public boolean edit(BCliente cli) {
@@ -66,9 +112,18 @@ public class ClienteDAO implements ClienteCRUD {
 	}
 	@Override
 	public boolean eliminar(int id) {
-		// TODO Auto-generated method stub
-		return false;
+	    String sql = "DELETE FROM clientes WHERE id ="+id;
+	    try {
+	        con = cn.getConnection();
+	        ps = con.prepareStatement(sql);
+	        ps.executeUpdate();
+	    } catch (Exception e) {
+	    } 
+	    return false; 
 	}
+
+	
+	
 	@Override
 	public void listarImg(int id, HttpServletResponse response) {
 		String sql = "SELECT Foto FROM clientes WHERE Id = ?";

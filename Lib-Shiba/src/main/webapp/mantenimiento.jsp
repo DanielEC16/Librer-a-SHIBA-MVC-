@@ -6,6 +6,7 @@
 <%@ page import="ModeloDAO.*" %>
 <%@ page import="java.util.Iterator" %>
 
+
 <%
 
 int i=1;
@@ -254,9 +255,16 @@ BRol rol=null;
             
             
             <div id="usuarios" class="content">
-            	<div>
-            		<h3>Lista de Clientes</h3>
-            	</div>
+            	<div class="d-flex justify-content-between">
+				 <h3>Lista de Clientes</h3>
+				 <div class="boton-agregar">
+	                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+	                        data-bs-target="#form-cliente">
+	                        Agregar Cliente
+	                    </button>
+	                    <%@ include file="commons/form-cliente.jspf" %> 
+     	           </div>
+				</div>
             	<hr>
                 <div class="tabla-clientes">
                     <div class="table-container">
@@ -291,7 +299,7 @@ BRol rol=null;
                             		<td><%= cli.getFecha_reg() %></td>
                             		<td>
                                         <button class="btn btn-primary">Editar</button>
-                                        <button class="btn btn-danger">Eliminar</button>
+                                        <a href="SCliente?accion=Eliminar&id=<%= cli.getId() %>" class="btn btn-danger">Eliminar</a>
                                     </td>
                             	</tr>
                             	<%i++;}%>
@@ -305,13 +313,11 @@ BRol rol=null;
 				<div class="d-flex justify-content-between">
 				 <h3>Lista de Administradores</h3>
 				 <div class="boton-agregar">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal2">
-                        Agregar administrador
-                    </button>
-                    
-                    <%@ include file="commons/form-admin.jspf" %>
-
+	                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+	                        data-bs-target="#exampleModal2">
+	                        Agregar administrador
+	                    </button>
+	                    <%@ include file="commons/form-admin.jspf" %>
      	           </div>
 				</div>
             	<hr>
@@ -355,7 +361,7 @@ BRol rol=null;
 									    %>
                             		</td>
                             		<td>
-                                        <a href="SAdministrador?accion=Editar&id=<%= adm.getId() %>" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editAdmin">Editar</a>                                      
+                                        <a  class="btn btn-primary" data-bs-toggle="modal">Editar</a>   
                                         <a href="SAdministrador?accion=Eliminar&id=<%= adm.getId() %>" class="btn btn-danger">Eliminar</a>
                                     </td>
                             	</tr>
@@ -371,7 +377,18 @@ BRol rol=null;
             
 
             <div id="ajustes" class="content">
-               
+            
+               <div class="d-flex justify-content-between">
+				 <h3>Lista de Roles</h3>
+				 <div class="boton-agregar">
+	                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+	                        data-bs-target="#form-rol">
+	                        Agregar Rol Nuevo
+	                    </button>
+	                    <%@ include file="commons/form-rol.jspf" %>
+     	           </div>
+				</div>
+				<hr>
                 <div class="tabla-roles">
                     <div class="table-container">
                         <table class="align-middle content-table">
@@ -396,7 +413,7 @@ BRol rol=null;
                             		<td><%= rol.getDescripcion()%></td>
                             		<td>
                                         <button class="btn btn-primary">Editar</button>
-                                        <button class="btn btn-danger">Eliminar</button>
+                                        <a href="SRol?accion=Eliminar&id=<%= rol.getId() %>" class="btn btn-danger">Eliminar</a>
                                     </td>
                             	</tr>
                             	<%
@@ -427,9 +444,6 @@ BRol rol=null;
         crossorigin="anonymous"></script>
 
     <script src="https://kit.fontawesome.com/75a5f6846b.js" crossorigin="anonymous"></script>
-    
-    
-    
     
     
 </body>

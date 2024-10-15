@@ -49,4 +49,14 @@
     <servlet-name>ImgAdmin</servlet-name>
     <url-pattern>/ImgAdmin</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SRol</display-name>
+    <servlet-name>SRol</servlet-name>
+    <servlet-class>Controlador.SRol</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SRol</servlet-name>
+    <url-pattern>/SRol</url-pattern>
+  </servlet-mapping>
 </web-app>

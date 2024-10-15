@@ -1,0 +1,41 @@
+ <div class="modal fade text-white" id="form-rol" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-theme="dark">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h2 class="modal-title fs-5" id="exampleModalLabel">
+                                        DATOS DEL ROL
+                                    </h2>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="row m-0 g-3 needs-validation" novalidate action="SRol" method="POST" enctype="multipart/form-data">
+                <div class="col-12">
+					<input type="hidden" name="accion" value="Guardar" />
+                    <label for="validationCustom01" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="validationRol1" placeholder="Nombre" name="nomRol" required>
+                </div>
+                <div class="col-12">
+                    <label for="validationCustom02" class="form-label">Descripcion</label>
+                    <input type="text" class="form-control" id="validationRol2" placeholder="Descripcion" name="desRol" required>
+                </div>
+
+                <div class="col-12">
+                                            <button class="btn btn-primary" type="submit">
+                                                Submit form
+                                            </button>
+                                            <button name="accion" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                Close
+                                            </button>
+                                        </div>
+            </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                                        

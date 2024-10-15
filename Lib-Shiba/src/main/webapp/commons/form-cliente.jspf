@@ -1,0 +1,81 @@
+ <div class="modal fade text-white" id="form-cliente" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-theme="dark">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h2 class="modal-title fs-5" id="exampleModalLabel">
+                                        DATOS DEL CLIENTE
+                                    </h2>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="row m-0 g-3 needs-validation" novalidate action="SCliente?accion=Guardar" method="POST" enctype="multipart/form-data">
+                <div class="col-12 col-sm-6">
+					<input type="hidden" name="accion" value="Guardar" />
+                    <label for="validationCustom01" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre" name="nomCli" required>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label for="validationCustom02" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="validationCustom02" placeholder="Apellido" name="apeCli" required>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label for="validationCustom02" class="form-label">Telefono</label>
+                    <input type="tel" class="form-control" id="validationCustom03" placeholder="Ej : 123456789" name="telCli" required maxlength="9"
+                    pattern="[0-9]{9}" placeholder="Ej: 123456789">   
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label for="validationCustom02" class="form-label">DNI</label>
+                    <input type="text" class="form-control" id="validationCustom04" placeholder="Ej : 12345678" required maxlength="9"
+                    pattern="[0-9]{9}" placeholder="Ej: 123456789" name="dniCli">
+                </div>
+                <div class="col-12">
+                    <label for="validationCustom02" class="form-label">Direccion</label>
+                    <input type="text" class="form-control" id="validationCustom05" placeholder="Apellido" name="dirCli" required>
+                </div>
+                <div class="col-12">
+                    <label for="validationCustomUsername" class="form-label">Correo</label>
+                    <div class="input-group has-validation">
+                        <input type="text" class="form-control" id="validationCustomUsername" placeholder="user-example"
+                            required name="corr1Cli" >
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <input type="text" class="form-control" id="validationCustomUsername2" placeholder="example.com"
+                            required name="corr2Cli">
+                    </div>
+                </div>
+                <div class="col-12">
+                                            <label for="validationCustomUsername" class="form-label">Contraseña</label>
+                                            <input type="password" class="form-control" id="validationCustom06"
+                                                placeholder="Ingrese una contraseña" required name="contraCli"/>
+                                        </div>
+                <div class="col-12 mb-3">
+                                            <label class="form-label">Foto (opcional)</label>
+                                            <label class="picture p-3" for="picture__input3" tabIndex="0">
+                                                <span class="picture__image"></span>
+                                            </label>
+
+                                            <input type="file" class="form-control" aria-label="file example"
+                                                name="picture__input" id="picture__input3">
+
+                                        </div>
+                <div class="col-12">
+                                            <button class="btn btn-primary" type="submit">
+                                                Submit form
+                                            </button>
+                                            <button name="accion" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                Close
+                                            </button>
+                                        </div>
+            </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                                       

@@ -11,6 +11,9 @@ import jakarta.servlet.http.Part;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
+
+import com.google.gson.Gson;
 
 import Modelo.BAdministradores;
 import ModeloDAO.AdminDAO;
@@ -55,13 +58,6 @@ public class SAdministrador extends HttpServlet {
 	        break;
 		}
 		
-		case "Editar":{
-			int id = Integer.parseInt(request.getParameter("id"));
-		    request.setAttribute("idadm", id); 
-		}
-		case "Actualizar":{
-			id = Integer.parseInt(request.getParameter("txtid"));
-		}
 		case "Eliminar": {
 			id = Integer.parseInt(request.getParameter("id"));
 			adm.setId(id);
@@ -69,7 +65,6 @@ public class SAdministrador extends HttpServlet {
 			response.sendRedirect("mantenimiento.jsp");
 			break;
 		}
-		default:
 			
 		}
 	}

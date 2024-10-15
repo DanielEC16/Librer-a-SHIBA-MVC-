@@ -72,7 +72,7 @@ public class AdminDAO implements AdminCRUD{
                 badm.setCorreo(rs.getString("Correo"));
                 badm.setContrasena(rs.getString("Contraseña"));
                 badm.setRolId(rs.getInt("Rol_ID"));
-                badm.setFoto(rs.getBlob("Foto").getBinaryStream());
+                badm.setFoto(rs.getBinaryStream("Foto"));
             }
 		} catch (Exception e) {
 		}
