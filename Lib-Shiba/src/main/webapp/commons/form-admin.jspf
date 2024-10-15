@@ -1,0 +1,93 @@
+                    <div class="modal fade text-white" id="exampleModal2" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-theme="dark">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h2 class="modal-title fs-5" id="exampleModalLabel">
+                                        DATOS DEL ADMINISTRADOR
+                                    </h2>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="row g-3 needs-validation" novalidate action="SAdministrador" method="POST" enctype="multipart/form-data">
+                                        <div class="col-6">
+                                        	<input type="hidden" name="accion" value="Guardar" />
+                                            <label for="validationCustom01" class="form-label">Nombre</label>
+                                            <input type="text" class="form-control" id="validationCustom01"
+                                                placeholder="Nombre" required name="nomAdmin"/>
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="validationCustom02" class="form-label">Apellido</label>
+                                            <input type="text" class="form-control" id="validationCustom02"
+                                                placeholder="Apellido" required name="apeAdmin"/>
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="validationCustom04" class="form-label">Contacto</label>
+                                            <input type="tel" class="form-control" id="validationCustom04" maxlength="9"
+                                                pattern="[0-9]{9}" placeholder="Ej: 123456789" required name="conAdmin"/>
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="validationCustomUsername" class="form-label">DNI</label>
+                                            <input type="tel" class="form-control" id="validationCustom04" maxlength="8"
+                                                pattern="[0-9]{8}" placeholder="Ej: 12345678" required name="dniAdmin"/>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="validationCustom03" class="form-label">Correo</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="validationCustom03"
+                                                    placeholder="user.example" required name="corr1Admin"/>
+                                                <span class="input-group-text">@</span>
+                                                <input type="text" class="form-control" id="validationCustom03"
+                                                    placeholder="example.com" required name="corr2Admin"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="validationCustomUsername" class="form-label">Contraseña</label>
+                                            <input type="password" class="form-control" id="validationCustom04"
+                                                placeholder="Ingrese una contraseña" required name="contraAdmin"/>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label class="form-label">Rol a cumplir</label>
+                                            <br>
+                                            <%
+                                            	
+												i=1;
+                                            	
+												while(iterRol.hasNext()){
+				                                    rol=iterRol.next();
+											%>
+                                            <div class="form-check-inline">
+                                                <input class="form-check-input" type="radio" name="rolAdmin"
+                                                   value="<%= rol.getId() %>" id="flexRadioDefault<%= i %>" required>
+                                                <label class="form-check-label" for="flexRadioDefault<%= i %>">
+                                                    <%= rol.getNombre() %>
+                                                </label>
+                                            </div>
+                                            <% i++;} %>
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <label class="form-label">Foto (opcional)</label>
+                                            <label class="picture p-3" for="picture__input1" tabIndex="0">
+                                                <span class="picture__image"></span>
+                                            </label>
+
+                                            <input type="file" class="form-control" aria-label="file example"
+                                                name="picture__input" id="picture__input1">
+
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-primary" type="submit">
+                                                Submit form
+                                            </button>
+                                            <button name="accion" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                Close
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
